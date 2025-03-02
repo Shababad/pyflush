@@ -13,11 +13,11 @@
 - No external libraries are required (though you might want to install `numpy` for any future optimizations or improvements).
 ### Clone the Repository
 ```bash
-git clone https://github.com/yourusername/pyflush.git
+git clone https://github.com/Shababad/pyflush.git
 cd pyflush
 ```
 ## Usage:
-To use the module, simply import the class and start a game:
+To use the module, simply import the class and start a game (detailed methods documentation below):
 ```py
 from pyflush import Game
 

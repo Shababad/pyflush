@@ -70,3 +70,6 @@ class Game():
         else:
             self.blind = blind
             self.pr(f"Blind set to {int(blind/2)}/{blind}")
+
+    def start_round():
+        pass
