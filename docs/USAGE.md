@@ -14,6 +14,9 @@ Removes player/bot from game player list with name
 - `set_blind(amount)`  
 Sets game blind amount, must be even and greater than 1
 
+- `start()`  
+Starts a default automatic poker round
+
 - `toggle_print()`  
 Toggles print configuration process status
 
