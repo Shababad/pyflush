@@ -18,7 +18,12 @@ class Game():
         self.log = {}
         self.wait_time = 1
 
-    # LOCAL ACTION FUNCTIONS #
+    # ---------- LOCAL ACTION FUNCTIONS ---------- #
+    
+    def pr(self, content) -> None:
+        if self.print_status:
+            print(content)
+
     def process_action(self, player, action_tuple, bet):
         round_stake = player.round_stake
         action = action_tuple[0]
@@ -55,11 +60,6 @@ class Game():
         for p in self.players:
             p.round_stake = 0
 
-    # LOCAL CLASS FUNCTIONS #
-    def pr(self, content) -> None:
-        if self.print_status:
-            print(content)
-
     def process_blinds(self):
         num_players = len(self.players)
         blind = self.blind
@@ -92,6 +92,7 @@ class Game():
         i = (self.btn + 1) % num_players
         turn = self.players[i]
         count = 0
+        last_raiser = None
 
         # If preflop
         if len(self.com_cards) == 0:
@@ -109,21 +110,29 @@ class Game():
                 turn += 1
                 count += 1
                 continue
+
+            if i == last_raiser:
+                break
             
             print(f"{turn.name}'s turn: ")
 
             action = turn.decide(bet, self.log)
             if action[1] is not None:
                 bet = action[1]
-                count = 0
+                count = 1
+                last_raiser = i
             else:
                 count += 1
             print(self.process_action(turn, action, bet))
             print("-" * 30)
             i = (i + 1) % num_players
 
-    # CLASS METHODS
+    # ---------- GLOBAL MODULE METHODS ---------- #
+
     def toggle_print(self):
+        """
+        Toggles configuration process printing
+        """
         if self.print_status is True:
             self.print_status = False
         else:
@@ -137,6 +146,7 @@ class Game():
         """
         Add a player to the game
         """
+        # If the input name already exists
         if name in [p.name for p in self.players]:
             raise Exception(f"Player with name: '{name}' already exists!")
         else:
@@ -149,6 +159,7 @@ class Game():
         """
         Add a bot to the game
         """
+        # If the input name already exists
         if name in [p.name for p in self.players]:
             raise Exception(f"Bot with name: '{name}' already exists!")
         else:
@@ -199,7 +210,8 @@ class Game():
         
         self.deck.shuffle()
         self.process_blinds()
-        # Give every player 
+
+        # Give every player hole cards
         for i in range(2):
             for p in self.players:
                 if not p.balance == 0:
@@ -207,10 +219,40 @@ class Game():
 
         print([card.name for card in self.deck.used])
         br()
+
+        # Preflop round
         print("POKER GAME")
         print(f"Players: {[p.name for p in self.players]}")
         for i in tqdm (range (len(self.players) * 2), desc="Dealing cards..."):
             sleep(0.1)
         br()
         self.round()
+        self.reset_new_round()
         br()
+
+        # Flop round
+        print("FLOP CARDS")
+        for i in range(3):
+            self.com_cards.append(self.deck.draw())
+        print(f"Community Cards: {[card.name for card in self.com_cards]}")
+        br()
+        self.round()
+        self.reset_new_round()
+        br()
+
+        # Turn round
+        print("TURN CARD")
+        self.com_cards.append(self.deck.draw())
+        print(f"Community Cards: {[card.name for card in self.com_cards]}")
+        br()
+        self.round()
+        self.reset_new_round()
+        br()
+
+        # River round
+        print("RIVER CARD")
+        self.com_cards.append(self.deck.draw())
+        print(f"Community Cards: {[card.name for card in self.com_cards]}")
+        br()
+        self.round()
+        
