@@ -255,4 +255,3 @@ class Game():
         print(f"Community Cards: {[card.name for card in self.com_cards]}")
         br()
         self.round()
-        
