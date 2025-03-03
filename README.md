@@ -1,13 +1,13 @@
-# PyFlush Documentation
-## Overview
+# 🃏 PyFlush Documentation
+## 📖 Overview
 `PyFlush` is a Python-based poker game module designed to simulate the mechanics of a Texas Hold'em poker game. It includes support for basic game rules, player and bot management, rounds, betting, and custom poker game rules. This module can be used as a foundation for creating a more complex poker game, integrating AI, or building a poker-related application.
 
-## Features
+## ✨ Features
 - Texas Hold'em Rules: Core rules for poker gameplay including betting rounds, community cards, and hand evaluation.
 - Players and Bots: The ability to add human players and AI-driven bots with customizable behavior.
 - Betting System: Supports different betting rounds (pre-flop, flop, turn, river) with customizable limits.
 
-## Installation
+## 🛠️ Installation
 ### Requirements:
 - Python 3.x
 - No external libraries are required (though you might want to install `numpy` for any future optimizations or improvements).
@@ -16,7 +16,7 @@
 git clone https://github.com/Shababad/pyflush.git
 cd pyflush
 ```
-## Usage:
+## 🎮 Usage
 To use the module, simply import the class and start a game (detailed methods documentation below):
 ```py
 from pyflush import Game
@@ -37,7 +37,18 @@ game.set_blind(20)
 game.start_round()
 ```
 
-[Detailed Methods Documentation](/docs/USAGE.md)
 
-## Change Log
-[Change Log](/docs/CHANGELOG.md)
+## 📚 Documentation
+
+- Detailed Methods Documentation: [Usage Instructions](docs/usage.md)
+- [Changelog](docs/changelog.md)
+
+## 🤝 Contributions & Feedback
+
+Feel free to contribute, suggest improvements, or report bugs by opening an issue or pull request. Let's make Poker Bot AI the ultimate poker opponent!
+
+📧 Contact: abieltxchai@gmail.com
+
+
+---
+<sup>Abiel Chai is the primary developer and maintainer of this project, ensuring continuous improvements and updates.</sup>

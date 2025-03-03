@@ -10,6 +10,11 @@ class Game():
         self.print_status: bool = True
 
     # LOCAL CLASS FUNCTIONS #
+    def pr(self, content) -> None:
+        if self.print_status:
+            print(content)
+
+    # CLASS METHODS
     def toggle_print(self):
         if self.print_status is True:
             self.print_status = False
@@ -20,11 +25,6 @@ class Game():
         else:
             print("Printing configuration process turned off!")
 
-    def pr(self, content) -> None:
-        if self.print_status:
-            print(content)
-
-    # CLASS METHODS
     def add_player(self, name: str, balance: int) -> None:
         """
         Add a player to the game
@@ -63,6 +63,9 @@ class Game():
             self.pr(f"Player/Bot '{name}' removed from the game!")
 
     def set_blind(self, blind: int):
+        """
+        Sets big blind, must be integer, even num, greater than 1
+        """
         if blind < 2:
             raise Exception("Blind minimum is 2")
         elif blind % 2:
