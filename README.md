@@ -34,14 +34,14 @@ game.add_bot("Tom", 100)
 game.set_blind(20)
 
 # Start a round
-game.start_round()
+game.start()
 ```
 
 
 ## 📚 Documentation
 
-- Detailed Methods Documentation: [Usage Instructions](docs/usage.md)
-- [Changelog](docs/changelog.md)
+- Detailed Methods Documentation: [Usage Instructions](docs/USAGE.md)
+- [Changelog](docs/CHANGELOG.md)
 
 ## 🤝 Contributions & Feedback
 

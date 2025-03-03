@@ -10,9 +10,13 @@ game.add_player("Chai", 10000)
 game.add_bot("Bob", 10000)
 game.add_bot("Tom", 10000)
 game.add_bot("Max", 10000)
+game.add_bot("Ben", 10000)
 
 # Removes player/bot by name
 game.remove("Max")
 
 # Sets big blind
 game.set_blind(20)
+
+if input("'start' to start game: ") == "start":
+    game.start()

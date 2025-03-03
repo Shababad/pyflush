@@ -16,17 +16,18 @@ class Deck():
         self.deck = [Card(rank, suit) for suit in suit_list for rank in rank_list]
         self.used = []
 
-    def draw(self) -> Card | None:
+    def draw(self) -> Card:
         """
         Draws a card from the deck
         """
         if len(self.used) == len(self.deck):
-            print("No cards in deck!")
-            return None
+            raise Exception("No cards in deck!")
 
         card = self.deck[randint(0,51)]
         while card in self.used:
             card = self.deck[randint(0,51)]
+        
+        self.used.append(card)
         
         return card
         
